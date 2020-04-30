@@ -44,6 +44,14 @@ RSpec.describe Organization, type: :model do
     it { should validate_length_of(:description).is_at_most(1020) }
   end
 
+  describe "Methods" do
+    it "can set its status to approved" do
+      organization.approve
+      expect(organization.status).to eq "approved"
+    end
+  end
+
+
   describe "#to_s" do
     it "has a string representation that returns its name" do
       expect(organization.to_s).to eq "FAKE"
