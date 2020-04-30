@@ -45,6 +45,11 @@ RSpec.describe Organization, type: :model do
   end
 
   describe "Methods" do
+    it "can set a default status" do
+      organization.set_default_status
+      expect(organization.status).to eq "submitted"
+    end
+
     it "can set its status to approved" do
       organization.approve
       expect(organization.status).to eq "approved"
