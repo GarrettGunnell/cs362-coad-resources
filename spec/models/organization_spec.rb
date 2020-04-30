@@ -49,6 +49,11 @@ RSpec.describe Organization, type: :model do
       organization.approve
       expect(organization.status).to eq "approved"
     end
+
+    it "can set its status to rejected" do
+      organization.reject
+      expect(organization.status).to eq "rejected"
+    end
   end
 
 
