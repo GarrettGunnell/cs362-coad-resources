@@ -1,5 +1,6 @@
+#FactoryBot.factories.clear
 FactoryBot.define do
   factory :organization do
-    name { "FAKE" }
+    name
   end
 end
