@@ -64,6 +64,7 @@ RSpec.describe Organization, type: :model do
 
   describe "#to_s" do
     it "has a string representation that returns its name" do
+      organization.name = "FAKE"
       expect(organization.to_s).to eq "FAKE"
     end
   end
