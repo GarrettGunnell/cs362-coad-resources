@@ -1,4 +1,3 @@
-#FactoryBot.factories.clear
 FactoryBot.define do
   factory :organization do
     name
