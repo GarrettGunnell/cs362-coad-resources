@@ -44,7 +44,7 @@ RSpec.describe Organization, type: :model do
     it { should validate_length_of(:description).is_at_most(1020) }
   end
 
-  describe "::set_default_status" do
+  describe "#set_default_status" do
     it "sets an undefined status to submitted" do
       organization.set_default_status
       expect(organization.status).to eq "submitted"
@@ -57,14 +57,14 @@ RSpec.describe Organization, type: :model do
     end
   end
 
-  describe "::approve" do
+  describe "#approve" do
     it "sets the status to approved" do
       organization.approve
       expect(organization.status).to eq "approved"
     end
   end
 
-  describe "::reject" do
+  describe "#reject" do
     it "sets the status to rejected" do
       organization.reject
       expect(organization.status).to eq "rejected"
