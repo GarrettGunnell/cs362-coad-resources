@@ -1,5 +1,5 @@
 FactoryBot.define do
-    factory :resource_category do
+    factory :resourcecategory do
       name
     end
   end
