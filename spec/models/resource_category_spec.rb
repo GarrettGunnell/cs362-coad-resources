@@ -40,4 +40,11 @@ RSpec.describe ResourceCategory, type: :model do
       expect(resourcecategory.active).to eq true
     end
   end
+
+  describe "#deactivate" do
+    it "sets active attribute to false" do
+      resourcecategory.deactivate
+      expect(resourcecategory.active).to eq false
+    end
+  end
 end
