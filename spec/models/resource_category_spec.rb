@@ -59,4 +59,11 @@ RSpec.describe ResourceCategory, type: :model do
       expect(resourcecategory.inactive?).to eq false
     end
   end
+
+  describe "#to_s" do
+    it "has a string representation that returns its name" do
+      resourcecategory.name = "FAKE"
+      expect(resourcecategory.to_s).to eq "FAKE"
+    end
+  end
 end
