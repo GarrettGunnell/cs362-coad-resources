@@ -33,4 +33,11 @@ RSpec.describe ResourceCategory, type: :model do
       expect(ResourceCategory.where(name: "Unspecified")).to include unspecified_resourcecategory
     end
   end
+
+  describe "#activate" do
+    it "sets active attribute to true" do
+      resourcecategory.activate
+      expect(resourcecategory.active).to eq true
+    end
+  end
 end
