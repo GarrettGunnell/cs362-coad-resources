@@ -13,11 +13,14 @@ RSpec.describe Ticket, type: :model do
   describe "Relationships" do
     it {should belong_to(:region)}
     it {should belong_to(:resource_category)}
-    it {should belong_to(:organization).optional}
+    it {should belong_to(:organization)}
   end
 
-#   describe "Validations" do
-      
-#   end
+  describe "Validations" do
+    it {should validate_presence_of(:name)}
+    it {should validate_presence_of(:phone)}
+    it {should validate_presence_of(:region_id)}
+    it {should validate_presence_of(:resource_category_id)}
+  end
 
 end
