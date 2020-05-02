@@ -47,4 +47,16 @@ RSpec.describe ResourceCategory, type: :model do
       expect(resourcecategory.active).to eq false
     end
   end
+
+  describe "#inactive?" do
+    it "returns true if active attribute is false" do
+      resourcecategory.active = false
+      expect(resourcecategory.inactive?).to eq true
+    end
+
+    it "returns false if active attribute is true" do
+      resourcecategory.active = true
+      expect(resourcecategory.inactive?).to eq false
+    end
+  end
 end
