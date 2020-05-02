@@ -31,4 +31,11 @@ RSpec.describe Region, type: :model do
       expect(Region.where(name: "Unspecified")).to include unspecified_region
     end
   end
+
+  describe "#to_s" do
+    it "has a string representation that returns its name" do
+      region.name = "FAKE"
+      expect(region.to_s).to eq "FAKE"
+    end
+  end
 end
