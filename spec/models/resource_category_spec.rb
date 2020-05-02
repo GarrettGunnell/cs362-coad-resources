@@ -18,4 +18,19 @@ RSpec.describe ResourceCategory, type: :model do
     it { should validate_length_of(:name).is_at_least(1).is_at_most(255) }
     it { should validate_uniqueness_of(:name).case_insensitive }
   end
+
+  describe "::unspecified" do
+    it "Creates an unspecified resource category if one does not exist" do
+      expect(ResourceCategory.where(name: "Unspecified")).to be_empty
+
+      unspecified_resourcecategory = ResourceCategory.unspecified
+      expect(ResourceCategory.where(name: "Unspecified")).to include unspecified_resourcecategory
+    end
+
+    it "Finds an unspecified resource category if one does exist" do
+      unspecified_resourcecategory = create(:resourcecategory, :unspecified)
+
+      expect(ResourceCategory.where(name: "Unspecified")).to include unspecified_resourcecategory
+    end
+  end
 end
