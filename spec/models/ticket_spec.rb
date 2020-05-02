@@ -27,4 +27,21 @@ RSpec.describe Ticket, type: :model do
     it {should validate_length_of(:phone), "10"}
   end
 
+#   describe "#open"
+#     it "distinguishes between open and closed tickets"
+#       closed_ticket = Ticket.create(closed: true)
+#       open_ticket = Ticket.create(closed: false)
+
+#       open_tickets = Ticket.open
+#       expect(open_tickets).to include(open_ticket)
+#     end
+#   end
+
+#   describe "open? method" do
+#   end
+#   describe "captured? method" do
+#   end
+#   describe "to_s" do
+#   end
+
 end
