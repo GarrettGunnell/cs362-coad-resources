@@ -16,4 +16,19 @@ RSpec.describe Region, type: :model do
     it { should validate_length_of(:name).is_at_least(1).is_at_most(255) }
     it { should validate_uniqueness_of(:name).case_insensitive }
   end
+
+  describe "::unspecified" do
+    it "Creates an unspecified region if one does not exist" do
+      expect(Region.where(name: "Unspecified")).to be_empty
+
+      unspecified_region = Region.unspecified
+      expect(Region.where(name: "Unspecified")).to include unspecified_region
+    end
+
+    it "Finds an unspecified region if one does exist" do
+      unspecified_region = create(:region, :unspecified)
+
+      expect(Region.where(name: "Unspecified")).to include unspecified_region
+    end
+  end
 end
