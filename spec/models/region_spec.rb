@@ -18,14 +18,14 @@ RSpec.describe Region, type: :model do
   end
 
   describe "::unspecified" do
-    it "Creates an unspecified region if one does not exist" do
+    it "creates an unspecified region if one does not exist" do
       expect(Region.where(name: "Unspecified")).to be_empty
 
       unspecified_region = Region.unspecified
       expect(Region.where(name: "Unspecified")).to include unspecified_region
     end
 
-    it "Finds an unspecified region if one does exist" do
+    it "cinds an unspecified region if one does exist" do
       unspecified_region = create(:region, :unspecified)
 
       expect(Region.where(name: "Unspecified")).to include unspecified_region

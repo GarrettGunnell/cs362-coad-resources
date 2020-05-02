@@ -20,14 +20,14 @@ RSpec.describe ResourceCategory, type: :model do
   end
 
   describe "::unspecified" do
-    it "Creates an unspecified resource category if one does not exist" do
+    it "creates an unspecified resource category if one does not exist" do
       expect(ResourceCategory.where(name: "Unspecified")).to be_empty
 
       unspecified_resourcecategory = ResourceCategory.unspecified
       expect(ResourceCategory.where(name: "Unspecified")).to include unspecified_resourcecategory
     end
 
-    it "Finds an unspecified resource category if one does exist" do
+    it "finds an unspecified resource category if one does exist" do
       unspecified_resourcecategory = create(:resourcecategory, :unspecified)
 
       expect(ResourceCategory.where(name: "Unspecified")).to include unspecified_resourcecategory
