@@ -36,4 +36,12 @@ RSpec.describe Ticket, type: :model do
 #       expect(open_tickets).to include(open_ticket)
 #     end
 #   end
+
+#   describe "open? method" do
+#   end
+#   describe "captured? method" do
+#   end
+#   describe "to_s" do
+#   end
+
 end
