@@ -10,6 +10,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "Relationships" do
+    it {should belong_to(:organization)}
   end
 
   describe "Validations" do
