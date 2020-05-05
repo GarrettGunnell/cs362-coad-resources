@@ -30,5 +30,16 @@ RSpec.describe User, type: :model do
     it { should validate_length_of(:password).is_at_least(7).is_at_most(255) }
   end
 
-  
+  describe "#set_default_role" do 
+    it "recognize user role" do
+      # user.set_default_role
+      # expect(user.role).to eq organization
+    end
+  end
+
+  describe "#to_se" do
+    it "displays user email appropriately" do
+      expect(user.to_s) == user.email
+    end
+  end
 end

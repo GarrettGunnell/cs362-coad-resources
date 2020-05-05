@@ -27,3 +27,21 @@ FactoryBot.define do
     "Ticket #{n}"
   end
 end
+
+FactoryBot.define do
+  sequence :role do |n|
+    1
+  end
+end
+
+FactoryBot.define do
+  sequence :email do |n|
+    "fake_email@email.com"
+  end
+end
+
+FactoryBot.define do 
+  sequence :password do |n|
+    "Fakepassword"
+  end
+end
