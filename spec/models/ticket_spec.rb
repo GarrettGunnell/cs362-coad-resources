@@ -43,6 +43,10 @@ RSpec.describe Ticket, type: :model do
   end
 
   describe "#captured?" do
+    it "identifies if the ticket does not belong to an organization" do
+      ticket.organization = nil
+      expect(ticket.captured?).to eq false
+    end
     it "identifies if the ticket belongs to an organization" do
       ticket.organization = build(:organization)
       expect(ticket.captured?).to eq true      
