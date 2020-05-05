@@ -30,10 +30,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "#set_default_role" do 
-    it "recognize user role" do
-      # user.set_default_role
-      # expect(user.role).to eq organization
-    end
+
   end
 
   describe "#to_s" do
