@@ -15,8 +15,15 @@ FactoryBot.define do
     "Region #{n}"
   end
 end
+
 FactoryBot.define do
   sequence :resource_category_id do |n|
     "Resource Category #{n}"
+  end
+end
+
+FactoryBot.define do
+  sequence :id do |n|
+    "Ticket #{n}"
   end
 end
