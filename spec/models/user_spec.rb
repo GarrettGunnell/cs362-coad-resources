@@ -37,9 +37,10 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "#to_se" do
-    it "displays user email appropriately" do
-      expect(user.to_s) == user.email
+  describe "#to_s" do
+    it "has a string representation that returns its email" do
+      user.email = "fake@example.com"
+      expect(user.to_s).to eq "fake@example.com"
     end
   end
 end
