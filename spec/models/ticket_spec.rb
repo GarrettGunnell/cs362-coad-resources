@@ -31,16 +31,27 @@ RSpec.describe Ticket, type: :model do
     it { should validate_length_of(:phone), "10" }
   end
 
-#   describe "#open"
-#     it "distinguishes between open and closed tickets"
-#       closed_ticket = Ticket.create(closed: true)
-#       open_ticket = Ticket.create(closed: false)
+  describe "#open?" do
+    it "distinguishes whether a ticket is open" do
+      ticket.closed = false
+      expect(ticket.open?).to eq true
+    end
+    it "distinguishes whether a ticket is closed" do
+      ticket.closed = true
+      expect(ticket.open?).to eq false
+    end
+  end
 
-#       open_tickets = Ticket.open
-#       expect(open_tickets).to include(open_ticket)
-#     end
-#   end
-
+  describe "#captured?" do
+    it "can distinguish whether a ticket has no organization" do
+      ticket.build(organization: false)
+      expect(ticket.captured?).to eq false
+    end
+    it "can distinguish whether a ticket has an organizaion" do
+      expect(ticket.captured?).to eq true      
+    end
+  end
+end
 #   describe "open? method" do
 #   end
 #   describe "captured? method" do
@@ -48,4 +59,3 @@ RSpec.describe Ticket, type: :model do
 #   describe "to_s" do
 #   end
 
-end
