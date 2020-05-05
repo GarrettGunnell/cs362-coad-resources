@@ -50,8 +50,8 @@ RSpec.describe Ticket, type: :model do
   end
 
   describe "#to_s" do
-    it "displays ticket id appropriately" do
-      expect(ticket.to_s) == ticket.id
+    it "has a string representation that returns its name" do
+      expect(ticket.to_s).to eq "Ticket " + ticket.id.to_s
     end
   end
 
