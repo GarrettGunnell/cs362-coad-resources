@@ -34,6 +34,15 @@ RSpec.describe ResourceCategory, type: :model do
     end
   end
 
+  describe "::active" do
+    it "returns a list of active resource categories" do
+      active_category = create(:resourcecategory, :active)
+
+      expect(ResourceCategory.active).to include active_category
+    end
+  end
+
+
   describe "#activate" do
     it "sets active attribute to true" do
       resourcecategory.activate
