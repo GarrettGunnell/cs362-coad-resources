@@ -42,6 +42,13 @@ RSpec.describe ResourceCategory, type: :model do
     end
   end
 
+  describe "::inactive" do
+    it "returns a list of inactive resource categories" do
+      inactive_category = create(:resourcecategory, :inactive)
+
+      expect(ResourceCategory.inactive).to include inactive_category
+    end
+  end
 
   describe "#activate" do
     it "sets active attribute to true" do
