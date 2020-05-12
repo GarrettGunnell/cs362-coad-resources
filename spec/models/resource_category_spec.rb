@@ -33,20 +33,22 @@ RSpec.describe ResourceCategory, type: :model do
       expect(ResourceCategory.where(name: "Unspecified")).to include unspecified_resourcecategory
     end
   end
+  
+  describe "scopes" do
+    describe "::active" do
+      it "returns a list of active resource categories" do
+        active_category = create(:resourcecategory, :active)
 
-  describe "::active" do
-    it "returns a list of active resource categories" do
-      active_category = create(:resourcecategory, :active)
-
-      expect(ResourceCategory.active).to include active_category
+        expect(ResourceCategory.active).to include active_category
+      end
     end
-  end
 
-  describe "::inactive" do
-    it "returns a list of inactive resource categories" do
-      inactive_category = create(:resourcecategory, :inactive)
+    describe "::inactive" do
+      it "returns a list of inactive resource categories" do
+        inactive_category = create(:resourcecategory, :inactive)
 
-      expect(ResourceCategory.inactive).to include inactive_category
+        expect(ResourceCategory.inactive).to include inactive_category
+      end
     end
   end
 
