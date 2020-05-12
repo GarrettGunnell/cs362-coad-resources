@@ -31,6 +31,10 @@ RSpec.describe Ticket, type: :model do
     it { should validate_length_of(:phone), "10" }
   end
 
+  describe "scopes" do
+    # pls put scope tests within this block thanks
+  end
+
   describe "#open?" do
     it "distinguishes whether a ticket is open" do
       ticket.closed = false
