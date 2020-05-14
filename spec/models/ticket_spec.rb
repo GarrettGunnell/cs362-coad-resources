@@ -32,7 +32,9 @@ RSpec.describe Ticket, type: :model do
   end
 
   describe "scopes" do
-    # pls put scope tests within this block thanks
+    it "can search for closed tickets" do
+      
+    end 
   end
 
   describe "#open?" do

@@ -6,5 +6,6 @@ FactoryBot.define do
     region_id
     organization
     resource_category_id
+    closed
   end
 end

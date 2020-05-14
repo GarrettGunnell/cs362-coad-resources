@@ -45,3 +45,9 @@ FactoryBot.define do
     "Fakepassword"
   end
 end
+
+FactoryBot.define do 
+  sequence :closed do |n|
+    false
+  end
+end
