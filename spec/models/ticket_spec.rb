@@ -52,6 +52,15 @@ RSpec.describe Ticket, type: :model do
         expect(Ticket.all_organization).to include ticket_with_org
       end
     end
+
+    describe "::organization" do
+      it "finds an organization id for open tickets" do
+        organization = create(:organization)
+        ticket_with_org = create(:ticket, :open, organization: organization)
+        expect(Ticket.organization(organization.id)).to include ticket_with_org
+      end
+    end
+
   end
 
   describe "#open?" do
