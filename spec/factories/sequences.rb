@@ -6,19 +6,19 @@ end
 
 FactoryBot.define do
   sequence :phone do |n|
-    "111111111#{n}"
+    "+61 412 345 678"
   end
 end
 
 FactoryBot.define do
   sequence :region_id do |n|
-    "Region #{n}"
+    "Region test"
   end
 end
 
 FactoryBot.define do
   sequence :resource_category_id do |n|
-    "Resource Category #{n}"
+    "Resource Category test"
   end
 end
 

@@ -32,9 +32,26 @@ RSpec.describe Ticket, type: :model do
   end
 
   describe "scopes" do
-    it "can search for closed tickets" do
-      
+    describe "::open" do
+      it "can query for open tickets" do
+        open_ticket = create(:ticket, :open)
+        expect(Ticket.open).to include open_ticket
+      end
     end 
+
+    describe "::closed" do
+      it "can query for closed tickets" do
+        closed_ticket = create(:ticket, :closed)
+        expect(Ticket.closed).to include closed_ticket
+      end
+    end
+
+    describe "::all_organization" do
+      it "finds all open tickets with organizations" do
+        ticket_with_org = create(:ticket, :open, organization: create(:organization))
+        expect(Ticket.all_organization).to include ticket_with_org
+      end
+    end
   end
 
   describe "#open?" do
