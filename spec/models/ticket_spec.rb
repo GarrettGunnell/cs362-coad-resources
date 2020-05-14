@@ -61,6 +61,22 @@ RSpec.describe Ticket, type: :model do
       end
     end
 
+    skip "::closed_organization" do
+      it "finds an organization id for closed tickets" do
+        organization = create(:organization)
+        closed_ticket_with_org = create(:ticket, :closed, organization: organization)
+        expect(Ticket.organization(organization.id)).to include closed_ticket_with_org
+      end
+    end
+
+    describe "::region" do
+      it "finds tickets based on region" do
+        region = create(:region)
+        ticket_with_region = create(:ticket, :open, region: region)
+        expect(Ticket.region(region.id)).to include ticket_with_region
+      end
+    end
+    
   end
 
   describe "#open?" do
