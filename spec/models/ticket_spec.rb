@@ -77,6 +77,14 @@ RSpec.describe Ticket, type: :model do
       end
     end
     
+    describe "::resource catergory" do
+      it "finds tickets based on resource category" do
+        resource_category = create(:resourcecategory)
+        ticket_with_resource_category = create(:ticket, :open, resource_category_id: resource_category.id)
+        expect(Ticket.resource_category(resource_category.id)).to include ticket_with_resource_category
+      end
+    end
+  
   end
 
   describe "#open?" do
