@@ -32,7 +32,20 @@ RSpec.describe User, type: :model do
   end
 
   describe "#set_default_role" do 
+    it "sets the user's role to organization if the role is undefined" do
+      user.role = nil
+      user.set_default_role
+      
+      expect(user.role).to eq "organization"
+    end
 
+    it "does not set the user's role if the role is already set" do
+      user.role = "admin"
+      user.set_default_role
+
+      expect(user.role).not_to eq "organization"
+      expect(user.role).to eq "admin"
+    end
   end
 
   describe "#to_s" do
