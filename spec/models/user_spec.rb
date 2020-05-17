@@ -35,7 +35,7 @@ RSpec.describe User, type: :model do
     it "sets the user's role to organization if the role is undefined" do
       user.role = nil
       user.set_default_role
-      
+
       expect(user.role).to eq "organization"
     end
 
@@ -51,6 +51,7 @@ RSpec.describe User, type: :model do
   describe "#to_s" do
     it "has a string representation that returns its email" do
       user.email = "fake@example.com"
+      
       expect(user.to_s).to eq "fake@example.com"
     end
   end

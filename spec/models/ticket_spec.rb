@@ -35,6 +35,7 @@ RSpec.describe Ticket, type: :model do
     describe "::open" do
       it "returns a list of open tickets" do
         open_ticket = create(:ticket, :open)
+
         expect(Ticket.open).to include open_ticket
       end
     end 
@@ -42,6 +43,7 @@ RSpec.describe Ticket, type: :model do
     describe "::closed" do
       it "returns a list of closed tickets" do
         closed_ticket = create(:ticket, :closed)
+
         expect(Ticket.closed).to include closed_ticket
       end
     end
@@ -49,6 +51,7 @@ RSpec.describe Ticket, type: :model do
     describe "::all_organization" do
       it "returns a list of open tickets attached to an organization" do
         ticket_with_org = create(:ticket, :open, organization: create(:organization))
+
         expect(Ticket.all_organization).to include ticket_with_org
       end
     end
@@ -57,6 +60,7 @@ RSpec.describe Ticket, type: :model do
       it "returns a list of an organization's open tickets" do
         organization = create(:organization)
         ticket_with_org = create(:ticket, :open, organization: organization)
+
         expect(Ticket.organization(organization.id)).to include ticket_with_org
       end
     end
@@ -65,6 +69,7 @@ RSpec.describe Ticket, type: :model do
       it "returns a list of an organization's closed tickets" do
         organization = create(:organization)
         closed_ticket_with_org = create(:ticket, :closed, organization: organization)
+
         expect(Ticket.closed_organization(organization.id)).to include closed_ticket_with_org
       end
     end
@@ -73,6 +78,7 @@ RSpec.describe Ticket, type: :model do
       it "returns a list of open tickets associated with a specific region" do
         region = create(:region)
         ticket_with_region = create(:ticket, :open, region: region)
+
         expect(Ticket.region(region.id)).to include ticket_with_region
       end
     end
@@ -81,6 +87,7 @@ RSpec.describe Ticket, type: :model do
       it "returns a list of open tickets based on resource category" do
         resource_category = create(:resourcecategory)
         ticket_with_resource_category = create(:ticket, :open, resource_category_id: resource_category.id)
+
         expect(Ticket.resource_category(resource_category.id)).to include ticket_with_resource_category
       end
     end
@@ -90,10 +97,13 @@ RSpec.describe Ticket, type: :model do
   describe "#open?" do
     it "distinguishes whether a ticket is open" do
       ticket.closed = false
+
       expect(ticket.open?).to eq true
     end
+    
     it "distinguishes whether a ticket is closed" do
       ticket.closed = true
+
       expect(ticket.open?).to eq false
     end
   end
@@ -101,10 +111,13 @@ RSpec.describe Ticket, type: :model do
   describe "#captured?" do
     it "identifies if the ticket does not belong to an organization" do
       ticket.organization = nil
+
       expect(ticket.captured?).to eq false
     end
+
     it "identifies if the ticket belongs to an organization" do
       ticket.organization = build(:organization)
+
       expect(ticket.captured?).to eq true      
     end
   end

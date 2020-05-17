@@ -22,8 +22,8 @@ RSpec.describe ResourceCategory, type: :model do
   describe "::unspecified" do
     it "creates an unspecified resource category if one does not exist" do
       expect(ResourceCategory.where(name: "Unspecified")).to be_empty
-
       unspecified_resourcecategory = ResourceCategory.unspecified
+
       expect(ResourceCategory.where(name: "Unspecified")).to include unspecified_resourcecategory
     end
 
@@ -55,6 +55,7 @@ RSpec.describe ResourceCategory, type: :model do
   describe "#activate" do
     it "sets active attribute to true" do
       resourcecategory.activate
+
       expect(resourcecategory.active).to eq true
     end
   end
@@ -62,6 +63,7 @@ RSpec.describe ResourceCategory, type: :model do
   describe "#deactivate" do
     it "sets active attribute to false" do
       resourcecategory.deactivate
+
       expect(resourcecategory.active).to eq false
     end
   end
@@ -69,11 +71,13 @@ RSpec.describe ResourceCategory, type: :model do
   describe "#inactive?" do
     it "returns true if active attribute is false" do
       resourcecategory.active = false
+
       expect(resourcecategory.inactive?).to eq true
     end
 
     it "returns false if active attribute is true" do
       resourcecategory.active = true
+
       expect(resourcecategory.inactive?).to eq false
     end
   end
@@ -81,6 +85,7 @@ RSpec.describe ResourceCategory, type: :model do
   describe "#to_s" do
     it "has a string representation that returns its name" do
       resourcecategory.name = "FAKE"
+      
       expect(resourcecategory.to_s).to eq "FAKE"
     end
   end

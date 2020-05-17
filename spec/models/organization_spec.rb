@@ -47,12 +47,14 @@ RSpec.describe Organization, type: :model do
   describe "#set_default_status" do
     it "sets an undefined status to submitted" do
       organization.set_default_status
+
       expect(organization.status).to eq "submitted"
     end
 
     it "does not set an already confirmed status" do
       organization.approve
       organization.set_default_status
+
       expect(organization.status).not_to eq "submitted"
     end
   end
@@ -60,6 +62,7 @@ RSpec.describe Organization, type: :model do
   describe "#approve" do
     it "sets the status to approved" do
       organization.approve
+
       expect(organization.status).to eq "approved"
     end
   end
@@ -67,6 +70,7 @@ RSpec.describe Organization, type: :model do
   describe "#reject" do
     it "sets the status to rejected" do
       organization.reject
+
       expect(organization.status).to eq "rejected"
     end
   end
@@ -75,6 +79,7 @@ RSpec.describe Organization, type: :model do
   describe "#to_s" do
     it "has a string representation that returns its name" do
       organization.name = "FAKE"
+      
       expect(organization.to_s).to eq "FAKE"
     end
   end
