@@ -61,11 +61,11 @@ RSpec.describe Ticket, type: :model do
       end
     end
 
-    skip "::closed_organization" do
+    describe "::closed_organization" do
       it "returns a list of an organization's closed tickets" do
         organization = create(:organization)
         closed_ticket_with_org = create(:ticket, :closed, organization: organization)
-        expect(Ticket.organization(organization.id)).to include closed_ticket_with_org
+        expect(Ticket.closed_organization(organization.id)).to include closed_ticket_with_org
       end
     end
 
