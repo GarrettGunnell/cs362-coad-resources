@@ -33,28 +33,28 @@ RSpec.describe Ticket, type: :model do
 
   describe "scopes" do
     describe "::open" do
-      it "can query for open tickets" do
+      it "returns a list of open tickets" do
         open_ticket = create(:ticket, :open)
         expect(Ticket.open).to include open_ticket
       end
     end 
 
     describe "::closed" do
-      it "can query for closed tickets" do
+      it "returns a list of closed tickets" do
         closed_ticket = create(:ticket, :closed)
         expect(Ticket.closed).to include closed_ticket
       end
     end
 
     describe "::all_organization" do
-      it "finds all open tickets with organizations" do
+      it "returns a list of open tickets attached to an organization" do
         ticket_with_org = create(:ticket, :open, organization: create(:organization))
         expect(Ticket.all_organization).to include ticket_with_org
       end
     end
 
     describe "::organization" do
-      it "finds an organization id for open tickets" do
+      it "returns a list of an organization's open tickets" do
         organization = create(:organization)
         ticket_with_org = create(:ticket, :open, organization: organization)
         expect(Ticket.organization(organization.id)).to include ticket_with_org
@@ -62,7 +62,7 @@ RSpec.describe Ticket, type: :model do
     end
 
     skip "::closed_organization" do
-      it "finds an organization id for closed tickets" do
+      it "returns a list of an organization's closed tickets" do
         organization = create(:organization)
         closed_ticket_with_org = create(:ticket, :closed, organization: organization)
         expect(Ticket.organization(organization.id)).to include closed_ticket_with_org
@@ -70,7 +70,7 @@ RSpec.describe Ticket, type: :model do
     end
 
     describe "::region" do
-      it "finds tickets based on region" do
+      it "returns a list of open tickets associated with a specific region" do
         region = create(:region)
         ticket_with_region = create(:ticket, :open, region: region)
         expect(Ticket.region(region.id)).to include ticket_with_region
@@ -78,7 +78,7 @@ RSpec.describe Ticket, type: :model do
     end
     
     describe "::resource catergory" do
-      it "finds tickets based on resource category" do
+      it "returns a list of open tickets based on resource category" do
         resource_category = create(:resourcecategory)
         ticket_with_resource_category = create(:ticket, :open, resource_category_id: resource_category.id)
         expect(Ticket.resource_category(resource_category.id)).to include ticket_with_resource_category
