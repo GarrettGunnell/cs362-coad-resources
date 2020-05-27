@@ -6,7 +6,7 @@ RSpec.describe 'Creating a Region', type: :feature do
         @user = create(:user, :admin)
     end
 
-    it "Does something" do
+    skip "Does something" do
         log_in_as @user
         visit '/regions/new'
         fill_in 'name', with: 'Fake Region Name'

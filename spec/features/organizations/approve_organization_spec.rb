@@ -7,7 +7,7 @@ RSpec.describe 'Approving an organization', type: :feature do
         @organization = create(:organization, :submitted)
     end
 
-    it "Displays an organization approved message" do
+    skip "Displays an organization approved message" do
         log_in_as @user
         visit '/organizations'
         click_on 'Review'
