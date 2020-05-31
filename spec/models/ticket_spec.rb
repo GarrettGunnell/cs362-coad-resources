@@ -64,7 +64,7 @@ RSpec.describe Ticket, type: :model do
     skip "::closed_organization" do
       it "finds an organization id for closed tickets" do
         organization = create(:organization)
-        closed_ticket_with_org = create(:ticket, :closed, organization: organization)
+        closed_ticket_with_org = create(:ticket, :closed, organization_id: organization.id)
         expect(Ticket.organization(organization.id)).to include closed_ticket_with_org
       end
     end
