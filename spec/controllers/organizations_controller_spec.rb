@@ -92,4 +92,63 @@ RSpec.describe OrganizationsController, type: :controller do
       specify { expect(post(:reject, params: {id: 'FAKE'})).to redirect_to dashboard_path }  
     end
   end
+
+  context "as an admin user" do
+    let(:user) { create(:user, :admin) }
+    before(:each) { sign_in(user) }
+
+    describe 'GET #index' do
+      specify { expect(get(:index)).to be_successful }
+    end
+
+    describe 'GET #new' do
+      specify { expect(get(:new)).to_not be_successful }
+    end
+
+    describe 'POST #create' do
+      specify { expect(post(:create, params: { organization: { name: 'FAKE' } })).to redirect_to dashboard_path }
+    end
+
+    describe 'GET #edit' do
+      specify { 
+        user.organization = create(:organization, :approved)
+        user.save
+        expect(get(:edit, params: {id: user.organization.id })).to be_successful 
+      }
+    end
+
+    describe 'PATCH #update' do
+      specify { 
+        user.organization = create(:organization, :approved)
+        user.save
+        expect(get(:update, 
+                   params: {id: user.organization.id, 
+                            organization: attributes_for(:organization) 
+                            }
+        )).to redirect_to organization_path(user.organization.id) 
+      } 
+    end
+
+    describe 'GET #show' do
+      specify { 
+        user.organization = create(:organization, :approved)
+        user.save
+        expect(get(:show, params: {id: user.organization.id })).to be_successful
+      }
+    end
+
+    describe 'POST #approve' do
+      specify { 
+        organization = create(:organization, :submitted)
+        expect(post(:approve, params: {id: organization.id})).to redirect_to organizations_path 
+      }
+    end
+
+    describe 'POST #reject' do
+    specify { 
+      organization = create(:organization, :submitted)
+      expect(post(:reject, params: {id: organization.id, organization: {rejection_reason: 'FAKE' }})).to redirect_to organizations_path 
+    }    
+    end
+  end
 end
