@@ -6,10 +6,10 @@ RSpec.describe 'Creating a Region', type: :feature do
         @user = create(:user, :admin)
     end
 
-    skip "Does something" do
+    it "creates a region" do
         log_in_as @user
-        visit '/regions/new'
-        fill_in 'name', with: 'Fake Region Name'
+        visit new_region_path
+        fill_in 'Name', with: 'Fake Region Name'
         click_on 'Add Region'
         expect(page).to have_text('Region successfully created')
     end
