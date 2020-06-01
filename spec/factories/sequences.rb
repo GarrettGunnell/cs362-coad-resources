@@ -36,7 +36,7 @@ end
 
 FactoryBot.define do
   sequence :email do |n|
-    "fake_email@email.com"
+    "fake_email#{n}@email.com"
   end
 end
 
