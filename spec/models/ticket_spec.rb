@@ -91,7 +91,6 @@ RSpec.describe Ticket, type: :model do
         expect(Ticket.resource_category(resource_category.id)).to include ticket_with_resource_category
       end
     end
-  
   end
 
   describe "#open?" do
@@ -127,7 +126,6 @@ RSpec.describe Ticket, type: :model do
       expect(ticket.to_s).to eq "Ticket " + ticket.id.to_s
     end
   end
-
 end
 
 
