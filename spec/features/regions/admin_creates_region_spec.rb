@@ -7,7 +7,7 @@ RSpec.describe 'Creating a Region', type: :feature do
   
       it "displays a success notification" do
         log_in_as @user
-        visit '/regions/new'
+        visit new_region_path
         fill_in 'Name', with: 'Fake Region Name'
         click_on 'Add Region'
         expect(page).to have_text('Region successfully created')
